@@ -9,8 +9,8 @@ import java.util.List;
 @Service
 public class PipelineService {
 
-    private static List<BaseFunction<String, String>> handlers = new ArrayList<>();
-    public PipelineService addHandler(BaseFunction<String,String> handler) {
+    private static List<BaseFunction<String, Object>> handlers = new ArrayList<>();
+    public PipelineService addHandler(BaseFunction<String,Object> handler) {
         handlers.add(handler);
         return this;
     }
@@ -19,13 +19,13 @@ public class PipelineService {
         return true;
     }
 
-    public String execute(String input) {
+    public char[] execute(String input) {
 
-        String interResult = input;
+        var interResult = (Object)input;
         for(int handler = 0; handler < handlers.size(); handler++) {
-            interResult = handlers.get(handler).apply(interResult);
+            interResult = handlers.get(handler).apply((String) interResult);
         }
-        return interResult;
+        return (char[]) interResult;
     }
 
 }

@@ -2,7 +2,7 @@ package com.example.pipeline_design_pattern_overview.pipeline.impl;
 
 import com.example.pipeline_design_pattern_overview.pipeline.BaseFunction;
 
-public class RemoveSpecialChars implements BaseFunction<String, String> {
+public class RemoveSpecialChars implements BaseFunction<String, Object> {
 
     @Override
     public String getFunctionName() {
@@ -10,7 +10,7 @@ public class RemoveSpecialChars implements BaseFunction<String, String> {
     }
 
     @Override
-    public String apply(String input) {
+    public Object apply(String input) {
         System.out.println("removing special chars from :"+input);
         String output = input.replaceAll("[^a-zA-Z0-9]","");
 

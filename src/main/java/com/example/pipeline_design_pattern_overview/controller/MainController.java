@@ -18,7 +18,7 @@ public class MainController {
     MainService mainService;
 
     @GetMapping
-    public String  applyPipeline() throws Exception {
+    public char[]  applyPipeline() throws Exception {
 //        HashMap<String,Object> inpMap = new HashMap<>();
         String input = "ab-(8)$9_UP+_F";
         System.out.println("Input is:"+input);

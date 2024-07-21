@@ -13,7 +13,7 @@ public class MainService {
     PipelineService pipelineService;
 
 
-    public String invokePipeline(String input) throws Exception {
+    public char[] invokePipeline(String input) throws Exception {
         boolean pipelineCreated = pipelineService
                 .addHandler(new RemoveUnderScore())
                 .addHandler(new RemoveSpecialChars())
@@ -23,7 +23,7 @@ public class MainService {
         if (!pipelineCreated) {
             throw new Exception("Error creating pipeline");
         }
-        String output = pipelineService.execute(input);
+        char[] output = pipelineService.execute(input);
         return output;
     }
 }

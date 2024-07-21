@@ -2,7 +2,10 @@ package com.example.pipeline_design_pattern_overview.pipeline.impl;
 
 import com.example.pipeline_design_pattern_overview.pipeline.BaseFunction;
 
-public class RemoveNumbers implements BaseFunction<String, String> {
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+public class RemoveNumbers implements BaseFunction<String, Object> {
 
 
     @Override
@@ -11,13 +14,13 @@ public class RemoveNumbers implements BaseFunction<String, String> {
     }
 
     @Override
-    public String apply(String input) {
+    public Object apply(String input) {
         System.out.println("removing numbers from :"+input);
 
         String output = input.replaceAll("[^A-Za-z]","");
 
-
+//        Integer[] charOutput = (Integer[]) Stream.of(output.toCharArray()).toArray();
         System.out.println("after removing numbers:"+output);
-        return output;
+        return output.toCharArray();
     }
 }
