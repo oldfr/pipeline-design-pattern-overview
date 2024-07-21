@@ -19,7 +19,6 @@ public class RemoveNumbers implements BaseFunction<String, Object> {
 
         String output = input.replaceAll("[^A-Za-z]","");
 
-//        Integer[] charOutput = (Integer[]) Stream.of(output.toCharArray()).toArray();
         System.out.println("after removing numbers:"+output);
         return output.toCharArray();
     }

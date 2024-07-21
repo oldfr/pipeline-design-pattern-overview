@@ -1,6 +1,8 @@
 package com.example.pipeline_design_pattern_overview.service;
 
+import com.example.pipeline_design_pattern_overview.model.PipelineCreator;
 import com.example.pipeline_design_pattern_overview.pipeline.BaseFunction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,17 +11,11 @@ import java.util.List;
 @Service
 public class PipelineService {
 
-    private static List<BaseFunction<String, Object>> handlers = new ArrayList<>();
-    public PipelineService addHandler(BaseFunction<String,Object> handler) {
-        handlers.add(handler);
-        return this;
-    }
-
-    public Boolean complete() {
-        return true;
-    }
+    @Autowired
+    PipelineCreator pipelineCreator;
 
     public char[] execute(String input) {
+        List<BaseFunction<String, Object>> handlers = pipelineCreator.getHandlers();
 
         var interResult = (Object)input;
         for(int handler = 0; handler < handlers.size(); handler++) {

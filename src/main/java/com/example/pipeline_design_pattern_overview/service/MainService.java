@@ -13,16 +13,7 @@ public class MainService {
     PipelineService pipelineService;
 
 
-    public char[] invokePipeline(String input) throws Exception {
-        boolean pipelineCreated = pipelineService
-                .addHandler(new RemoveUnderScore())
-                .addHandler(new RemoveSpecialChars())
-                .addHandler(new RemoveNumbers())
-                .complete();
-
-        if (!pipelineCreated) {
-            throw new Exception("Error creating pipeline");
-        }
+    public char[] invokePipeline(String input) {
         char[] output = pipelineService.execute(input);
         return output;
     }
