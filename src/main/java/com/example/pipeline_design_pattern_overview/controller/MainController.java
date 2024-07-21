@@ -18,11 +18,11 @@ public class MainController {
     MainService mainService;
 
     @GetMapping
-    public Map<String,Object>  applyPipeline() throws Exception {
-        HashMap<String,Object> inpMap = new HashMap<>();
-        inpMap.put("key","ab-(8)$9_UP+_F");
-        System.out.println("Input is:"+inpMap);
-        return mainService.invokePipeline(inpMap);
+    public String  applyPipeline() throws Exception {
+//        HashMap<String,Object> inpMap = new HashMap<>();
+        String input = "ab-(8)$9_UP+_F";
+        System.out.println("Input is:"+input);
+        return mainService.invokePipeline(input);
 
     }
 }

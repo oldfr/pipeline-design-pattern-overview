@@ -5,13 +5,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class PipelineService {
 
-    private static List<BaseFunction<Map<String,Object>,Map<String, Object>>> handlers = new ArrayList<>();
-    public PipelineService addHandler(BaseFunction<Map<String,Object>,Map<String, Object>> handler) {
+    private static List<BaseFunction<String, String>> handlers = new ArrayList<>();
+    public PipelineService addHandler(BaseFunction<String,String> handler) {
         handlers.add(handler);
         return this;
     }
@@ -20,14 +19,13 @@ public class PipelineService {
         return true;
     }
 
-    @SuppressWarnings("unchecked")
-    public Map<String, Object> execute(Map<String, Object> inputMap) {
-                handlers.stream()
-                .forEach(f -> {
-                    Map<String, Object> interResult = (Map<String, Object>) f.apply(inputMap);
-                    inputMap.putAll(interResult);
-                });
-                return inputMap;
+    public String execute(String input) {
+
+        String interResult = input;
+        for(int handler = 0; handler < handlers.size(); handler++) {
+            interResult = handlers.get(handler).apply(interResult);
+        }
+        return interResult;
     }
 
 }

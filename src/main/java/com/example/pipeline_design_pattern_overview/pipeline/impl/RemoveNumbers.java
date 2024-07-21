@@ -2,10 +2,7 @@ package com.example.pipeline_design_pattern_overview.pipeline.impl;
 
 import com.example.pipeline_design_pattern_overview.pipeline.BaseFunction;
 
-import java.util.Map;
-import java.util.stream.Collectors;
-
-public class RemoveNumbers implements BaseFunction<Map<String,Object>, Map<String,Object>> {
+public class RemoveNumbers implements BaseFunction<String, String> {
 
 
     @Override
@@ -14,16 +11,10 @@ public class RemoveNumbers implements BaseFunction<Map<String,Object>, Map<Strin
     }
 
     @Override
-    public Map<String, Object> apply(Map<String, Object> input) {
+    public String apply(String input) {
         System.out.println("removing numbers from :"+input);
 
-        Map<String, Object>  output = input.entrySet().stream()
-                .map(m -> {
-                    String res = ((String) m.getValue()).replaceAll("[^A-Za-z]", "");
-                    m.setValue(res);
-                    return m;
-                })
-                .collect(Collectors.toMap(k -> k.getKey(), v->v.getValue()));
+        String output = input.replaceAll("[^A-Za-z]","");
 
 
         System.out.println("after removing numbers:"+output);
