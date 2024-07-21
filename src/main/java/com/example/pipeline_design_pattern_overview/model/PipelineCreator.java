@@ -20,9 +20,3 @@ public class PipelineCreator {
         return handlers;
     }
 }
-
-
-
-//    public Boolean complete() {
-//        return true;
-//    }}
