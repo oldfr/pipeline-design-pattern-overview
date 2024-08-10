@@ -2,9 +2,6 @@ package com.example.pipeline_design_pattern_overview.pipeline.impl;
 
 import com.example.pipeline_design_pattern_overview.pipeline.BaseFunction;
 
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
 public class RemoveNumbers implements BaseFunction<String, Object> {
 
 
